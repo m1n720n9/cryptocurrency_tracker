@@ -133,8 +133,8 @@ interface PriceData{
 function Coin() {
   const {coinId} = useParams<RouteParams>();
   const {state} = useLocation<RouteState>();
-  const priceMatch = useRouteMatch("/cryptocurrency_tracker/:coinId/price");
-  const chartMatch = useRouteMatch("/cryptocurrency_tracker/:coinId/chart");
+  const priceMatch = useRouteMatch("/:coinId/price");
+  const chartMatch = useRouteMatch("/:coinId/chart");
   const {isLoading : infoLoading, data: infoData} = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
   const {isLoading : tickersLoading, data: tickersData} = useQuery<PriceData>(["tickers", coinId], () => fetchCoinTickers(coinId), {refetchInterval:5000,});
   const loading = infoLoading || tickersLoading;
@@ -186,10 +186,10 @@ function Coin() {
           </Tab>
         </Tabs>
         <Switch>
-          <Route path={`cryptocurrency_tracker/:coinId/price`}>
+          <Route path={`/:coinId/price`}>
             <Price coinId={coinId} />
           </Route>
-          <Route path={`cryptocurrency_tracker/${coinId}/chart`}>
+          <Route path={`/${coinId}/chart`}>
             <Chart coinId={coinId} />
           </Route>
         </Switch>

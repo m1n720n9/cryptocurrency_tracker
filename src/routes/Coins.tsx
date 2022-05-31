@@ -66,7 +66,7 @@ function Coins() {
           {data?.slice(0,100).map(coin =>
           <Coin key={coin.id}>
             <Link to={{
-              pathname:`cryptocurrency_tracker/${coin.id}`, state:{name : coin.name} 
+              pathname:`/${coin.id}`, state:{name : coin.name} 
             }}>
               <Img src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`} />
               {coin.name} &rarr;
