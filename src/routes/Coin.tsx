@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link, Route, Switch, useLocation, useParams, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
-import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import {fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
   
