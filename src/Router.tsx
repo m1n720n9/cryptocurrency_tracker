@@ -5,10 +5,10 @@ import Coin from "./routes/Coin"
 function Router (){
   return <BrowserRouter>
     <Switch>
-      <Route path="/:coinId">
+      <Route path="/cryptocurrency_tracker/:coinId">
         <Coin />
       </Route>
-      <Route path="/">
+      <Route path="/cryptocurrency_tracker">
         <Coins />
       </Route>
     </Switch>
