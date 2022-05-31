@@ -186,10 +186,10 @@ function Coin() {
           </Tab>
         </Tabs>
         <Switch>
-          <Route path={`/:coinId/price`}>
+          <Route path={`cryptocurrency_tracker/:coinId/price`}>
             <Price coinId={coinId} />
           </Route>
-          <Route path={`/${coinId}/chart`}>
+          <Route path={`cryptocurrency_tracker/${coinId}/chart`}>
             <Chart coinId={coinId} />
           </Route>
         </Switch>
