@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.ab7f3387.js",
-    "index.html": "/portfolio/index.html",
-    "main.ab7f3387.js.map": "/portfolio/static/js/main.ab7f3387.js.map"
+    "main.js": "/cryptocurrency_tracker/static/js/main.7b4cad61.js",
+    "index.html": "/cryptocurrency_tracker/index.html",
+    "main.7b4cad61.js.map": "/cryptocurrency_tracker/static/js/main.7b4cad61.js.map"
   },
   "entrypoints": [
-    "static/js/main.ab7f3387.js"
+    "static/js/main.7b4cad61.js"
   ]
 }
