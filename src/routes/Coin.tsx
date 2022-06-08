@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
+import ico_back from "./img/ico_goback.png";
   
 const Container = styled.div`
   padding : 0px 20px;
@@ -13,8 +14,21 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
-  height : 15vh; display: flex; justify-content : center; align-items : center;
+  height : 15vh;
+/*   display: flex;
+  align-items: center;
+  justify-content: space-around; */
 `;
+
+const Title = styled.h1`
+  font-size:48px;
+  color : ${props => props.theme.accentColor};
+  text-align: center;
+`
+
+const GoBack = styled.img`
+  width:20px;
+`
 
 const Overview = styled.div`
   display: flex; justify-content: space-between;
@@ -36,7 +50,9 @@ const OverviewItem = styled.div `
   }
 `;
 const Description = styled.p`
-  margin: 20px 0px;
+  margin: 10px 0px;
+  line-height: 30px;
+  padding:10px;
 `;
 
 const Tabs = styled.div`
@@ -59,10 +75,7 @@ const Tab = styled.span<{isActive : boolean}>`
   }
 `
 
-const Title = styled.h1`
-  font-size:48px;
-  color : ${props => props.theme.accentColor};
-`
+
 
 const Loader = styled.span`
   text-align: center;
@@ -144,7 +157,12 @@ function Coin() {
       <title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</title>
     </Helmet>
     <Header>
-      <Title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</Title>
+      <Link to = {"/"}>
+          <GoBack src={ico_back} alt="go_back" />
+      </Link>
+      <Title>
+        {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+      </Title>
     </Header>
     {loading ? <Loader>"Loading..."</Loader> : (
       <>

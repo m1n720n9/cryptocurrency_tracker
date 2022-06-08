@@ -41,31 +41,59 @@ interface PriceData{
 }
 
 const PriceBox = styled.div`
-  max-width: 480px;
-  padding: 16px;
-  background: rgba(255,255,255,.5);
-  border-radius: 10px;
+  display: flex;
+  justify-content:space-between;
+  margin-bottom: 50px;
 `
 const PriceList = styled.ul`
-  
+width: 50%;
+&:first-child{margin-right: 10px}
 `
 const PriceItem = styled.li`
-  
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(0,0,0,.1);
+  font-size: 12px;
+  margin-bottom: 10px;
 `
 
 function Price ({coinId} : PriceProps) {
   const {isLoading : tickersLoading, data: tickersData} = useQuery<PriceData>(["tickers", coinId], () => fetchCoinTickers(coinId), {refetchInterval:5000,});
   return(
-    <PriceBox>
+    <>
       {tickersLoading? "loading" : 
-      <PriceList>
-        <PriceItem>
-          <span>변동(12h) :</span>
-          <span> {tickersData?.quotes.USD.percent_change_12h}</span>
-        </PriceItem>
-      </PriceList>
+      <PriceBox>
+        <PriceList>
+          <PriceItem>
+            <span>변동(1h) :</span>
+            <span> {tickersData?.quotes.USD.percent_change_1h}%</span>
+          </PriceItem>
+          <PriceItem>
+            <span>변동(24h) :</span>
+            <span> {tickersData?.quotes.USD.percent_change_24h}%</span>
+          </PriceItem>
+          <PriceItem>
+            <span>변동(7d) :</span>
+            <span> {tickersData?.quotes.USD.percent_change_7d}%</span>
+          </PriceItem>
+        </PriceList>
+        <PriceList>
+          <PriceItem>
+            <span>거래량(24h) :</span>
+            <span> \{tickersData?.quotes.USD.volume_24h_change_24h}%</span>
+          </PriceItem>
+          <PriceItem>
+            <span>총 거래량 :</span>
+            <span> {tickersData?.quotes.USD.volume_24h.toFixed(0)}</span>
+          </PriceItem>
+          <PriceItem>
+            <span>총 시가 :</span>
+            <span> \{tickersData?.quotes.USD.market_cap}</span>
+          </PriceItem>
+        </PriceList>
+      </PriceBox>
       }
-    </PriceBox>
+    </>
 
   )
 };

@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import {fetchCoinHistory} from "../api";
 import ApexChart from "react-apexcharts";
+import styled from "styled-components";
 
 interface ChartProps{
   coinId: string
@@ -17,10 +18,14 @@ interface IHistiorical{
   market_cap: number;
 }
 
+const ChartBox = styled.div`
+  margin-bottom: 50px;
+`
+
 function Chart({coinId} : ChartProps) {
   const {isLoading, data} = useQuery<IHistiorical[]>(["ohlcv", coinId], ()=> fetchCoinHistory(coinId), {refetchInterval:10000});
   return (
-    <div>{isLoading ? "Loading..." :
+    <ChartBox>{isLoading ? "Loading..." :
       <ApexChart
         type="line"
         series={[
@@ -41,7 +46,7 @@ function Chart({coinId} : ChartProps) {
           tooltip:{y:{formatter: (value) => `$${value.toFixed(2)}`}}
         }}
       />}
-    </div>
+    </ChartBox>
   )
 };
 
