@@ -28,19 +28,20 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
-  font-size:48px;
+  font-size:30px;
+  font-weight: bold;
   color : ${props => props.theme.accentColor};
-`
+`;
 
 const Loader = styled.span`
   text-align: center;
   font-size: 30px;
   display: block;
-`
+`;
 
 const Img = styled.img`
   width: 35px; height: 35px; margin-right: 10px;
-`
+`;
 
 interface ICoin{
   "id": string,
@@ -55,26 +56,29 @@ interface ICoin{
 function Coins() {
   const {isLoading, data} = useQuery<ICoin[]>("allCoins", fetchCoins)
   return (
-  <Container>
-    <Helmet>
-    <title>코인</title>
-    </Helmet>
+    <Container>
+      <Helmet>
+      <title>코인</title>
+      </Helmet>
       <Header>
-        <Title>코인</Title>
+        <Title>시가 총액별 암호화폐 TOP 100</Title>
       </Header>
-      {isLoading ? <Loader>"Loading..."</Loader> :  <CoinsList>
+      {isLoading ? <Loader>"Loading..."</Loader> :
+        <CoinsList>
           {data?.slice(0,100).map(coin =>
-          <Coin key={coin.id}>
-            <Link to={{
-              pathname:`/${coin.id}`, state:{name : coin.name} 
-            }}>
-              <Img src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`} />
-              {coin.name} &rarr;
-            </Link>
-          </Coin>)}
+            <Coin key={coin.id}>
+              <Link to={{
+                pathname:`/${coin.id}`, state:{name : coin.name} 
+              }}>
+                <Img src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`} />
+                {coin.name} &rarr;
+              </Link>
+            </Coin>
+          )}
         </CoinsList>
       }
-  </Container>
-  )}
+    </Container>
+  )
+}
 
 export default Coins;

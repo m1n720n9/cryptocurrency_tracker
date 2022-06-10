@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { fetchCoinTickers } from "../api";
 import styled from "styled-components";
 
 interface PriceProps{
@@ -46,14 +46,14 @@ const PriceBox = styled.div`
   margin-bottom: 50px;
 `
 const PriceList = styled.ul`
-width: 50%;
-&:first-child{margin-right: 10px}
+  width: 50%;
+  &:first-child{margin-right: 10px}
 `
 const PriceItem = styled.li`
   padding: 10px 20px;
   border-radius: 10px;
   background: rgba(0,0,0,.1);
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 10px;
 `
 
@@ -62,39 +62,38 @@ function Price ({coinId} : PriceProps) {
   return(
     <>
       {tickersLoading? "loading" : 
-      <PriceBox>
-        <PriceList>
-          <PriceItem>
-            <span>변동(1h) :</span>
-            <span> {tickersData?.quotes.USD.percent_change_1h}%</span>
-          </PriceItem>
-          <PriceItem>
-            <span>변동(24h) :</span>
-            <span> {tickersData?.quotes.USD.percent_change_24h}%</span>
-          </PriceItem>
-          <PriceItem>
-            <span>변동(7d) :</span>
-            <span> {tickersData?.quotes.USD.percent_change_7d}%</span>
-          </PriceItem>
-        </PriceList>
-        <PriceList>
-          <PriceItem>
-            <span>거래량(24h) :</span>
-            <span> \{tickersData?.quotes.USD.volume_24h_change_24h}%</span>
-          </PriceItem>
-          <PriceItem>
-            <span>총 거래량 :</span>
-            <span> {tickersData?.quotes.USD.volume_24h.toFixed(0)}</span>
-          </PriceItem>
-          <PriceItem>
-            <span>총 시가 :</span>
-            <span> \{tickersData?.quotes.USD.market_cap}</span>
-          </PriceItem>
-        </PriceList>
-      </PriceBox>
+        <PriceBox>
+          <PriceList>
+            <PriceItem>
+              <span>변동(1h) :</span>
+              <span> {tickersData?.quotes.USD.percent_change_1h}%</span>
+            </PriceItem>
+            <PriceItem>
+              <span>변동(24h) :</span>
+              <span> {tickersData?.quotes.USD.percent_change_24h}%</span>
+            </PriceItem>
+            <PriceItem>
+              <span>변동(7d) :</span>
+              <span> {tickersData?.quotes.USD.percent_change_7d}%</span>
+            </PriceItem>
+          </PriceList>
+          <PriceList>
+            <PriceItem>
+              <span>거래량(24h) :</span>
+              <span> \{tickersData?.quotes.USD.volume_24h_change_24h}%</span>
+            </PriceItem>
+            <PriceItem>
+              <span>총 거래량 :</span>
+              <span> {tickersData?.quotes.USD.volume_24h.toFixed(0)}</span>
+            </PriceItem>
+            <PriceItem>
+              <span>총 시가 :</span>
+              <span> \{tickersData?.quotes.USD.market_cap}</span>
+            </PriceItem>
+          </PriceList>
+        </PriceBox>
       }
     </>
-
   )
 };
 

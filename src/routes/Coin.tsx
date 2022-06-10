@@ -14,21 +14,24 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
-  height : 15vh;
-/*   display: flex;
+  display: flex;
   align-items: center;
-  justify-content: space-around; */
+  justify-content: center;
+  height : 15vh;
+  position: relative;
 `;
 
 const Title = styled.h1`
   font-size:48px;
   color : ${props => props.theme.accentColor};
   text-align: center;
-`
+`;
 
 const GoBack = styled.img`
+  position: absolute;
+  left: 0;
   width:20px;
-`
+`;
 
 const Overview = styled.div`
   display: flex; justify-content: space-between;
@@ -41,7 +44,6 @@ const OverviewItem = styled.div `
   display: flex;
   flex-direction : column;
   align-items: center;
-
   span:first-child{
     font-size: 10px;
     font-weight: 400;
@@ -64,24 +66,20 @@ const Tabs = styled.div`
 const Tab = styled.span<{isActive : boolean}>`
   text-align: center;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   background-color: rgba(0,0,0,.5);
   padding: 7px 0px;
   border-radius: 10px;
-  color: ${props => props.isActive ? props.theme.accentColor : props.theme.textColor};
-  a{
-    display: block;
-  }
-`
-
-
+  color:${props => props.isActive ? props.theme.accentColor : props.theme.textColor};
+  a{display: block;}
+`;
 
 const Loader = styled.span`
   text-align: center;
   font-size: 30px;
   display: block;
-`
+`;
 
 interface RouteParams{
   coinId : string;
@@ -212,8 +210,7 @@ function Coin() {
           </Route>
         </Switch>
       </>
-    )
-  }
+    )}
   </Container>
   )
 };
