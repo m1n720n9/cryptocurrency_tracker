@@ -38,7 +38,7 @@ function Chart({coinId} : ChartProps) {
           theme:{mode : "dark"},
           chart : {height: 300, width: 500, background: "transparent", toolbar:{show:false}},
           grid:{show:false},
-          xaxis:{labels:{show:false},axisTicks:{show:false}, axisBorder:{show:false}, type:"datetime", categories:data?.map((price)=> price.time_close)},
+          xaxis:{labels:{show:false},axisTicks:{show:false}, axisBorder:{show:false}, type:"datetime", categories:data?.map((price) => (price.time_close as any) * 1000 ?? [])},
           yaxis:{show:false},
           stroke: {curve : "smooth", width: 3},
           fill:{type:"gradient", gradient: {gradientToColors: ["#fffa65"], stops:[0,100]}},
